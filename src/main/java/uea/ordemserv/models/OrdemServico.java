@@ -1,5 +1,6 @@
 package uea.ordemserv.models;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
@@ -7,10 +8,13 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 import uea.ordemserv.models.enums.StatusOrdemServico;
 
 @Entity
-public class OrdemServico {
+public class OrdemServico implements Serializable{
+	
+	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long codigo;
@@ -19,12 +23,16 @@ public class OrdemServico {
 	private LocalDateTime dataSolicitacao;
 	private LocalDateTime dataFinalizado;
 	private String servicoRealizado;
+	
+	
+	@ManyToOne
+	private Pessoa solicitante;
 
 	public OrdemServico() {
 	}
 
 	public OrdemServico(Long codigo, String descricao, StatusOrdemServico stauts, LocalDateTime dataSolicitacao,
-			LocalDateTime dataFinalizado, String servicoRealizado) {
+			LocalDateTime dataFinalizado, String servicoRealizado, Pessoa solicitante) {
 		super();
 		this.codigo = codigo;
 		this.descricao = descricao;
@@ -32,6 +40,7 @@ public class OrdemServico {
 		this.dataSolicitacao = dataSolicitacao;
 		this.dataFinalizado = dataFinalizado;
 		this.servicoRealizado = servicoRealizado;
+		this.solicitante = solicitante;
 	}
 
 	public Long getCodigo() {
@@ -80,6 +89,14 @@ public class OrdemServico {
 
 	public void setServicoRealizado(String servicoRealizado) {
 		this.servicoRealizado = servicoRealizado;
+	}
+
+	public Pessoa getSolicitante() {
+		return solicitante;
+	}
+
+	public void setSolicitante(Pessoa solicitante) {
+		this.solicitante = solicitante;
 	}
 
 	@Override
