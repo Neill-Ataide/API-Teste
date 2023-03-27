@@ -1,6 +1,7 @@
 package uea.ordemserv.services;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +31,10 @@ public class PessoaService {
 	}
 
 	public void excluir(Long codigo) {
+		Optional<Pessoa> pessoaExistente = pessoaRepository.findById(codigo);
+	    if(!(pessoaExistente == null)) {
+	        throw new RuntimeException("Não existe ninguem com este ID");
+	    }
 		pessoaRepository.deleteById(codigo);
 	}
 

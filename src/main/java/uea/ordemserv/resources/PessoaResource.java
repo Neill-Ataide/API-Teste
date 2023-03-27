@@ -18,6 +18,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import uea.ordemserv.models.Pessoa;
 import uea.ordemserv.services.PessoaService;
 
+
 @RestController
 @RequestMapping("/pessoas")
 public class PessoaResource {
@@ -37,14 +38,14 @@ public class PessoaResource {
 
 	@GetMapping
 	public ResponseEntity<List<Pessoa>> listar() {
-		List<Pessoa> pessoaes = pessoaService.listar();
-		return ResponseEntity.ok().body(pessoaes);
+		List<Pessoa> pessoas = pessoaService.listar();
+		return ResponseEntity.ok().body(pessoas);
 	}
 
 	@GetMapping(value = "/{codigo}")
 	public ResponseEntity<Pessoa> buscarPorCodigo(@PathVariable Long codigo) {
-		Pessoa pessoaes = pessoaService.buscarPorCodigo(codigo);
-		return ResponseEntity.ok().body(pessoaes);
+		Pessoa pessoas = pessoaService.buscarPorCodigo(codigo);
+		return ResponseEntity.ok().body(pessoas);
 	}
 
 	@DeleteMapping(value = "/{codigo}")
