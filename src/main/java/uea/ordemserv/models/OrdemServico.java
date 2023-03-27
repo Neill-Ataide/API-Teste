@@ -20,7 +20,7 @@ public class OrdemServico implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long codigo;
 	private String descricao;
-	private StatusOrdemServico stauts;
+	private StatusOrdemServico status;
 	private LocalDateTime dataSolicitacao;
 	private LocalDateTime dataFinalizado;
 	private String servicoRealizado;
@@ -38,7 +38,7 @@ public class OrdemServico implements Serializable{
 		super();
 		this.codigo = codigo;
 		this.descricao = descricao;
-		this.stauts = stauts;
+		this.status = stauts;
 		this.dataSolicitacao = dataSolicitacao;
 		this.dataFinalizado = dataFinalizado;
 		this.servicoRealizado = servicoRealizado;
@@ -62,11 +62,11 @@ public class OrdemServico implements Serializable{
 	}
 
 	public StatusOrdemServico getStauts() {
-		return stauts;
+		return status;
 	}
 
 	public void setStauts(StatusOrdemServico stauts) {
-		this.stauts = stauts;
+		this.status = stauts;
 	}
 
 	public LocalDateTime getDataSolicitacao() {
