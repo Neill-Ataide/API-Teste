@@ -19,7 +19,7 @@ import uea.ordemserv.models.OrdemServico;
 import uea.ordemserv.services.OrdemServicoService;
 
 @RestController
-@RequestMapping("/pessoas")
+@RequestMapping("/ordens")
 public class OrdemServicoResource {
 	
 	@Autowired
